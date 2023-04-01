@@ -1,7 +1,7 @@
 /******************************************************************************
 * Includes
 ******************************************************************************/
-#include "template.h"
+#include "stringUtils.h"
 
 /******************************************************************************
 * Macros and constants
@@ -30,5 +30,32 @@
 /******************************************************************************
 * External functions definition
 ******************************************************************************/
+void halMinToMay(char *string)
+{
+    char *ptr = string;
 
+    while ( *ptr != '\0' ) {
+        *ptr = toupper(*ptr);
+        ptr++;
+    }
+}
+
+char* halMinToMay2(char *string) //Retorna char* para poder llamar directamente a funciones que usan strings: strcmp(miStringB,halMinToMay2(miStringA))
+{
+    char *stringAux;
+
+    stringAux = (char*)malloc(strlen(string) + 1);
+    if(!stringAux)
+        return NULL;
+
+    strcpy(stringAux,string);
+
+    char *ptr = stringAux;
+    while ( *ptr != '\0' ) {
+        *ptr = toupper(*ptr);
+        ptr++;
+    }
+    //printf("stringAUx dsp:%s\n",stringAux);
+    return stringAux;
+}
 /******************************** END OF FILE ********************************/
